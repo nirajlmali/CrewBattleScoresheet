@@ -4,13 +4,97 @@
     <meta charset="UTF-8">
     <title>Hello World!</title>
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body style="background: white;">
-    <h1>Hello World!</h1>
-    <p>
-        We are using node <script>document.write(process.versions.node)</script>,
-        Chrome <script>document.write(process.versions.chrome)</script>,
-        and Electron <script>document.write(process.versions.electron)</script>.
-    </p>
+    <div class="row">
+        <div class="col" style="text-align: right;">
+            <select>
+                <option>RCS</option>
+            </select>
+            <h3>Score 1</h3>
+        </div>
+        <div class="col" style="text-align: left;">
+            <select>
+                <option>Unity</option>
+            </select>
+            <h3>Score 2</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align: center;">
+            <button id="newcrew" type="button">Add a Crew</button>
+        </div>
+    </div>
+    <hr>
+    <div style="text-align: center;">
+        <select>
+            <option>1. Sawstep vs LQVII</option>
+        </select>
+    </div>
+    <div style="text-align: center; margin-bottom: 1%;">
+        <button>Add a Match</button>
+    </div>
+    <div class="row">
+        <!-- Crew 1 Player (Left Side) -->
+        <div class="col" style="text-align: right;">
+            <label style="vertical-align: top;" for="select_p1">Crew 1 Player</label>
+            <div>
+                <select id="select_p1" name="select_p1">
+                    <option>Eve</option>
+                    <option>Adam</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-1" style="text-align: right;">
+            <label style="vertical-align: top;" for="select_char">Character</label>
+            <div>
+                <select id="select_char" name="select_char">
+                    <option>Roy</option>
+                    <option>Fox</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Stocks taken (Both, Center) -->
+        <div class="col" style="text-align: center;">
+            <div class="row" style="text-align: center;">
+                <div class="col" style="text-align: right;">
+                    <p>Score 1</p>
+                    <h3>0</h3>
+                </div>
+                <div class="col" style="text-align: left;">
+                    <p>Score 2</p>
+                    <h3>1</h3>
+                </div>
+            </div>
+        </div>
+        <!-- Crew 2 Player (Right Side) -->
+        <div class="col-1" style="text-align: left">
+            <label style="vertical-align: top;" for="select_char">Character</label>
+            <div>
+                <select id="select_char" name="select_char">
+                    <option>Roy</option>
+                    <option>Fox</option>
+                </select>
+            </div>
+        </div>
+        <div class="col" style="text-align: left;">
+            <label style="vertical-align: top;" for="select_p2">Crew 2 Player</label>
+            <div>
+                <select id="select_p2" name="select_p2">
+                    <option>Eve</option>
+                    <option>Adam</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div style="text-align: center;">
+        <button>Submit Changes</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
