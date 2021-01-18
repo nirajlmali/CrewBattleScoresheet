@@ -1,0 +1,10 @@
+{
+  "name": "crew-battle-scoresheet",
+  "version": "0.1.0",
+  "author": "Niraj Mali",
+  "description": "My Electron app for Crew Battle Scoresheets",
+  "main": "main.js",
+  "scripts": {
+      "start": "electron ."
+  }
+}
