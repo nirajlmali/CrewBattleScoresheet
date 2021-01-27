@@ -5,6 +5,22 @@
   "description": "My Electron app for Crew Battle Scoresheets",
   "main": "main.js",
   "scripts": {
-      "start": "electron ."
-  }
+    "start": "electron ."
+  },
+  "dependencies": {
+    "python-shell": "^2.0.3"
+  },
+  "devDependencies": {
+    "electron": "^11.2.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nirajlmali/CrewBattleScoresheet.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nirajlmali/CrewBattleScoresheet/issues"
+  },
+  "homepage": "https://github.com/nirajlmali/CrewBattleScoresheet#readme"
 }

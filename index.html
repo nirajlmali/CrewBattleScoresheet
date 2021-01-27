@@ -9,24 +9,24 @@
 <body style="background: white;">
     <div class="row">
         <div class="col" style="text-align: right;">
-            <select>
-                <option>RCS</option>
+            <select id="select_crew1">
             </select>
             <h3>Score 1</h3>
         </div>
         <div class="col" style="text-align: left;">
-            <select>
-                <option>Unity</option>
+            <select id="select_crew2">
             </select>
             <h3>Score 2</h3>
         </div>
     </div>
     <div class="row">
         <div class="col" style="text-align: center;">
-            <button id="newcrew" type="button">Add a Crew</button>
+            <button id="newcrew" type="button" onclick="populate()">Add a Crew</button>
         </div>
     </div>
+
     <hr>
+    
     <div style="text-align: center;">
         <select>
             <option>1. Sawstep vs LQVII</option>
@@ -41,8 +41,6 @@
             <label style="vertical-align: top;" for="select_p1">Crew 1 Player</label>
             <div>
                 <select id="select_p1" name="select_p1">
-                    <option>Eve</option>
-                    <option>Adam</option>
                 </select>
             </div>
         </div>
@@ -83,8 +81,6 @@
             <label style="vertical-align: top;" for="select_p2">Crew 2 Player</label>
             <div>
                 <select id="select_p2" name="select_p2">
-                    <option>Eve</option>
-                    <option>Adam</option>
                 </select>
             </div>
         </div>
@@ -93,8 +89,63 @@
         <button>Submit Changes</button>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
+<script>
+function populate(){
+
+    // Code referred to from https://www.skcript.com/svr/how-to-execute-python-scripts-in-electron-and-nodejs/
+    const {PythonShell} = require('python-shell');
+
+    let pyshell = new PythonShell('pyscripts/scripts.py');
+
+    pyshell.on('message', function(message) {
+        //Populate Crew Dropdowns
+        let crews = JSON.parse(message)['crew_list'];
+        let crews1 = document.getElementById("select_crew1");
+        crews1.length = crews.length - 1;
+        let crews2 = document.getElementById("select_crew2");
+        crews2.length = crews.length - 1;
+
+        let idx = 0;
+        crews.forEach(element => {
+            let opt = document.createElement('option');
+            opt.text = element;
+            let opt2 = document.createElement('option');
+            opt2.text = element;
+            crews1.add(opt);
+            crews1.selectedIndex = idx;
+            crews2.add(opt2);
+            crews2.selectedIndex = idx;
+        });
+
+        let players = JSON.parse(message)['player_list'];
+        console.log(players)
+        let p1 = document.getElementById("select_p1");
+        p1.length = crews.length - 1;
+        let p2 = document.getElementById("select_p2");
+        p2.length = crews.length - 1;
+
+        idx = 0;
+        players.forEach(element => {
+            let opt = document.createElement('option');
+            opt.text = element;
+            let opt2 = document.createElement('option');
+            opt2.text = element;
+            p1.add(opt);
+            p1.selectedIndex = idx;
+            p2.add(opt2);
+            p2.selectedIndex = idx;
+        });
+    })
+
+    pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+    console.log('finished');
+    });
+}
+
+populate();
+</script>
