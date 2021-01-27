@@ -98,3 +98,24 @@ function submitPlayer(){
     console.log('finished');
     });
 }
+
+
+function submitCrew(){
+    let newcrew = document.getElementById("newcrew").value;
+    const {PythonShell} = require('python-shell');
+
+    let pyshell = new PythonShell('pyscripts/addcrew.py');
+    console.log("Sending " + newcrew)
+    pyshell.send(JSON.stringify(newcrew));
+
+    pyshell.on('message', function(message) {
+    console.log(message);
+    })
+
+    pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+    console.log('finished');
+    });
+}
