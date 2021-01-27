@@ -26,7 +26,8 @@
     </div>
 
     <hr>
-    
+
+    <!-- CURRENT MATCH -->
     <div style="text-align: center;">
         <select>
             <option>1. Sawstep vs LQVII</option>
@@ -34,8 +35,10 @@
     </div>
     <div style="text-align: center; margin-bottom: 1%;">
         <button>Add a Match</button>
+        <br>
         <button onclick="addPlayer()">Add New Player</button>
     </div>
+
     <div class="row">
         <!-- Crew 1 Player (Left Side) -->
         <div class="col" style="text-align: right;">
@@ -45,13 +48,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-2" style="text-align: right;">
-            <label style="vertical-align: top;" for="select_char1">Character</label>
-            <div>
-                <select id="select_char1" name="select_char1">
-                </select>
-            </div>
-        </div>
+       
 
         <!-- Stocks taken (Both, Center) -->
         <div class="col" style="text-align: center;">
@@ -67,17 +64,27 @@
             </div>
         </div>
         <!-- Crew 2 Player (Right Side) -->
-        <div class="col-2" style="text-align: left">
-            <label style="vertical-align: top;" for="select_char2">Character</label>
-            <div>
-                <select id="select_char2" name="select_char2">
-                </select>
-            </div>
-        </div>
+        
         <div class="col" style="text-align: left;">
             <label style="vertical-align: top;" for="select_p2">Crew 2 Player</label>
             <div>
                 <select id="select_p2" name="select_p2">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" style="text-align: right;">
+            <label style="vertical-align: top;" for="select_char1">Character</label>
+            <div>
+                <select id="select_char1" name="select_char1">
+                </select>
+            </div>
+        </div>
+        <div class="col" style="text-align: left">
+            <label style="vertical-align: top;" for="select_char2">Character</label>
+            <div>
+                <select id="select_char2" name="select_char2">
                 </select>
             </div>
         </div>

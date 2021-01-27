@@ -1,7 +1,14 @@
 {
-    "crew_list" : ["RCS", "Unity"],
-    "player_list" : ["Eve", "Rest"],
-    "character_list" : [
+    "crew_list": [
+        "RCS",
+        "Unity"
+    ],
+    "player_list": [
+        "Eve",
+        "Rest",
+        "Player Guy"
+    ],
+    "character_list": [
         "Mario",
         "Donkey Kong",
         "Link",

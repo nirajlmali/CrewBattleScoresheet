@@ -78,3 +78,23 @@ function addPlayer(){
     const { ipcRenderer } = require('electron');
     ipcRenderer.invoke('add-player');
 }
+
+function submitPlayer(){
+    let newPlayer = document.getElementById("newplayer").value;
+    const {PythonShell} = require('python-shell');
+
+    let pyshell = new PythonShell('pyscripts/addplayer.py');
+    console.log("Sending " + newPlayer)
+    pyshell.send(JSON.stringify(newPlayer));
+
+    pyshell.on('message', function(message) {
+    console.log(message);
+    })
+
+    pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+    console.log('finished');
+    });
+}
