@@ -3,7 +3,7 @@ function populate(){
     // Code referred to from https://www.skcript.com/svr/how-to-execute-python-scripts-in-electron-and-nodejs/
     const {PythonShell} = require('python-shell');
 
-    let pyshell = new PythonShell('pyscripts/scripts.py');
+    let pyshell = new PythonShell('pyscripts/populate.py');
 
     pyshell.on('message', function(message) {
         console.log(message);
