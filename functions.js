@@ -53,3 +53,13 @@ function populate(){
     console.log('finished');
     });
 }
+
+function addCrew(){
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.invoke('add-crew');
+}
+
+function addPlayer(){
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.invoke('add-player');
+}
