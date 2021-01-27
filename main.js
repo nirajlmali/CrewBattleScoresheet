@@ -28,7 +28,7 @@ app.on('activate', () => {                  //Listener that makes new window if 
 })
 
 ipcMain.handle('add-crew', function(){
-  const win = new BrowserWindow({   
+  const child = new BrowserWindow({   
     width: 800,
     height: 300,
     webPreferences: {
@@ -36,7 +36,7 @@ ipcMain.handle('add-crew', function(){
     }
   })
 
-  win.loadFile('newcrew.html')
+  child.loadFile('newcrew.html')
 });
 
 ipcMain.handle('add-player', function(){
