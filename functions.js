@@ -86,16 +86,17 @@ function submitPlayer(){
     let pyshell = new PythonShell('pyscripts/addplayer.py');
     console.log("Sending " + newPlayer)
     pyshell.send(JSON.stringify(newPlayer));
+    populate();
 
     pyshell.on('message', function(message) {
-    console.log(message);
+        console.log(message);
     })
 
     pyshell.end(function (err) {
-    if (err){
-        throw err;
-    };
-    console.log('finished');
+        if (err){
+            throw err;
+        };
+        console.log('finished');
     });
 }
 
@@ -110,6 +111,7 @@ function submitCrew(){
 
     pyshell.on('message', function(message) {
     console.log(message);
+    
     })
 
     pyshell.end(function (err) {

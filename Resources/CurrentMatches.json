@@ -1,0 +1,12 @@
+{
+    "matches" : [
+        {
+            "p1" : "Player 1",
+            "p2" : "Player 2",
+            "score1" : "0",
+            "score2" : "0",
+            "char1" : "Bayonetta",
+            "char2" : "Bayonetta"
+        }
+    ]
+}
