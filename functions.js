@@ -10,9 +10,7 @@ function populate(){
         //Populate Crew Dropdowns
         let crews = JSON.parse(message)['crew_list'];
         let crews1 = document.getElementById("select_crew1");
-        crews1.length = crews.length - 1;
         let crews2 = document.getElementById("select_crew2");
-        crews2.length = crews.length - 1;
 
         let idx = 0;
         crews.forEach(element => {
@@ -29,9 +27,7 @@ function populate(){
         let players = JSON.parse(message)['player_list'];
         console.log(players)
         let p1 = document.getElementById("select_p1");
-        p1.length = crews.length - 1;
         let p2 = document.getElementById("select_p2");
-        p2.length = crews.length - 1;
 
         idx = 0;
         players.forEach(element => {
@@ -43,6 +39,25 @@ function populate(){
             p1.selectedIndex = idx;
             p2.add(opt2);
             p2.selectedIndex = idx;
+        });
+
+        let chars = JSON.parse(message)['character_list'];
+        console.log(players)
+        let char1 = document.getElementById("select_char1");
+        let char2 = document.getElementById("select_char2");
+
+        console.log(chars)
+
+        idx = 0;
+        chars.forEach(element => {
+            let opt = document.createElement('option');
+            opt.text = element;
+            let opt2 = document.createElement('option');
+            opt2.text = element;
+            char1.selectedIndex = idx;
+            char1.add(opt);
+            char2.selectedIndex = idx;
+            char2.add(opt2);
         });
     })
 
