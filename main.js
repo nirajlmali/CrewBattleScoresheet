@@ -50,3 +50,15 @@ ipcMain.handle('add-player', function(){
 
   win.loadFile('newplayer.html')
 });
+
+ipcMain.handle('change-alt', function(){
+  const win = new BrowserWindow({   
+    width: 800,
+    height: 300,
+    webPreferences: {
+      nodeIntegration: true
+    }
+  })
+
+  win.loadFile('changealt.html')
+});

@@ -121,3 +121,8 @@ function submitCrew(){
     console.log('finished');
     });
 }
+
+function changeAlt(){
+    const { ipcRenderer } = require('electron');
+    ipcRenderer.invoke('change-alt');
+}
