@@ -126,3 +126,35 @@ function changeAlt(){
     const { ipcRenderer } = require('electron');
     ipcRenderer.invoke('change-alt');
 }
+
+function getPaths(){
+    // let newcrew = document.getElementById("newcrew").value;
+    const {PythonShell} = require('python-shell');
+
+    let pyshell = new PythonShell('pyscripts/getcharacteralts.py');
+    // console.log("Sending " + newcrew)
+    // pyshell.send(JSON.stringify(newcrew));
+
+    pyshell.on('message', function(message) {
+        console.log(message);
+        
+        let paths = JSON.parse(message)["paths"];
+        // console.log(paths);
+
+        paths.forEach(path => {
+            var img = document.createElement("img")
+            img.src = "Resources/CharacterIcons/Mario/" + path;
+            var src = document.getElementById("bodyalt");
+            src.appendChild(img);
+        });
+
+    });
+
+    pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+    console.log('finished');
+    });
+
+}
