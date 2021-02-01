@@ -127,27 +127,62 @@ function changeAlt(){
     ipcRenderer.invoke('change-alt');
 }
 
-function getPaths(){
-    // let newcrew = document.getElementById("newcrew").value;
+function charListAlts(){
+
+    // Code referred to from https://www.skcript.com/svr/how-to-execute-python-scripts-in-electron-and-nodejs/
     const {PythonShell} = require('python-shell');
 
-    let pyshell = new PythonShell('pyscripts/getcharacteralts.py');
-    // console.log("Sending " + newcrew)
-    // pyshell.send(JSON.stringify(newcrew));
+    let pyshell = new PythonShell('pyscripts/populate.py');
 
     pyshell.on('message', function(message) {
         console.log(message);
-        
-        let paths = JSON.parse(message)["paths"];
-        // console.log(paths);
+        //Populate Character Select
+        let chars = JSON.parse(message)['character_list'];
+        let char1 = document.getElementById("charlist_alt");
 
-        paths.forEach(path => {
-            var img = document.createElement("img")
-            img.src = "Resources/CharacterIcons/Mario/" + path;
-            var src = document.getElementById("bodyalt");
-            src.appendChild(img);
+        console.log(chars)
+
+        idx = 0;
+        chars.forEach(element => {
+            let opt = document.createElement('option');
+            opt.text = element;
+            char1.add(opt);
         });
+    })
 
+    pyshell.end(function (err) {
+    if (err){
+        throw err;
+    };
+    console.log('finished');
+    });
+}
+
+function getAlts(){
+    let char = document.getElementById("charlist_alt").value;
+    const {PythonShell} = require('python-shell');
+
+    let pyshell = new PythonShell('pyscripts/getcharacteralts.py');
+    console.log("Sending " + char);
+    pyshell.send(JSON.stringify(char));
+
+    pyshell.on('message', function(message) {
+        console.log(message);
+        let paths = JSON.parse(message)["paths"];
+        console.log(paths);
+
+        var src = document.getElementById("img_list");
+        src.innerHTML = ''
+        
+        paths.forEach(path => {
+            var img = document.createElement("img");
+            var div = document.createElement("div");
+            div.classList.add("col");
+            img.src = "Resources/CharacterIcons/" + char + "/" + path;
+
+            div.appendChild(img);
+            src.appendChild(div);
+        });
     });
 
     pyshell.end(function (err) {
@@ -156,5 +191,4 @@ function getPaths(){
     };
     console.log('finished');
     });
-
 }
