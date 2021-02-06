@@ -166,6 +166,8 @@ function getAlts(){
     console.log("Sending " + char);
     pyshell.send(JSON.stringify(char));
 
+    p = ""
+
     pyshell.on('message', function(message) {
         console.log(message);
         let paths = JSON.parse(message)["paths"];
@@ -173,16 +175,21 @@ function getAlts(){
 
         var src = document.getElementById("img_list");
         src.innerHTML = ''
-        
+
         paths.forEach(path => {
             var img = document.createElement("img");
             var div = document.createElement("div");
             div.classList.add("col");
-            img.src = "Resources/CharacterIcons/" + char + "/" + path;
+            fp = "Resources/CharacterIcons/" + char + "/" + path
+            img.src = fp;
+            img.value = "Resources/CharacterIcons/" + char + "/" + path
 
             div.appendChild(img);
             src.appendChild(div);
+            p = fp
         });
+        const { ipcRenderer } = require('electron');
+        ipcRenderer.invoke("store-alt", p)
     });
 
     pyshell.end(function (err) {
@@ -191,4 +198,11 @@ function getAlts(){
     };
     console.log('finished');
     });
+    
+}
+
+function updateAlt(path){
+    console.log(path)
+    let p1img = document.getElementById("p1_char_img");
+    p1img.src = "Resources/CharacterIcons/Mario/chara_2_mario_07.png";
 }

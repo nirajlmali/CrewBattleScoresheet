@@ -62,3 +62,7 @@ ipcMain.handle('change-alt', function(){
 
   win.loadFile('changealt.html')
 });
+
+ipcMain.handle('store-alt', (event, someArgument) => {
+  event.returnValue('alt-change', someArgument)
+});
